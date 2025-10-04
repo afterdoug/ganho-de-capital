@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using GanhoDeCapital.Application.DTOs;
 using GanhoDeCapital.Application.Services;
 using GanhoDeCapital.Domain.Services;
-using GanhoDeCapital.Infrastructure.Services;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace GanhoDeCapital.Tests.Integration
@@ -16,8 +15,7 @@ namespace GanhoDeCapital.Tests.Integration
         public TaxCalculationIntegrationTests()
         {
             // Setup real implementations (not mocks) for integration testing
-            ITaxRulesProvider taxRulesProvider = new BrazilianTaxRulesProvider();
-            ITaxCalculationService taxCalculationService = new TaxCalculationService(taxRulesProvider);
+            ITaxCalculationService taxCalculationService = new TaxCalculationService();
             _applicationService = new TaxCalculationApplicationService(taxCalculationService);
         }
 

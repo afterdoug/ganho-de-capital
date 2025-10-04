@@ -1,26 +1,19 @@
-using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using GanhoDeCapital.Domain.Entities;
 using GanhoDeCapital.Domain.Services;
-using NSubstitute;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace GanhoDeCapital.Tests.Domain
 {
     public class TaxCalculationServiceTests
     {
-        private readonly ITaxRulesProvider _taxRulesProvider;
         private readonly TaxCalculationService _taxCalculationService;
 
         public TaxCalculationServiceTests()
         {
-            // Setup mock for tax rules provider
-            _taxRulesProvider = Substitute.For<ITaxRulesProvider>();
-            _taxRulesProvider.TaxRate.Returns(0.20m); // 20% tax rate
-            _taxRulesProvider.ExemptionThreshold.Returns(20000.00m); // R$20,000.00 threshold
-
-            _taxCalculationService = new TaxCalculationService(_taxRulesProvider);
+            _taxCalculationService = new TaxCalculationService();
         }
 
         [Fact]

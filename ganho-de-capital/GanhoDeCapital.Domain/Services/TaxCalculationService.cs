@@ -1,17 +1,15 @@
+using GanhoDeCapital.Domain.Entities;
+using GanhoDeCapital.Infrastructure.Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using GanhoDeCapital.Domain.Entities;
 
 namespace GanhoDeCapital.Domain.Services
 {
     public class TaxCalculationService : ITaxCalculationService
     {
-        private readonly ITaxRulesProvider _taxRulesProvider;
 
-        public TaxCalculationService(ITaxRulesProvider taxRulesProvider)
+        public TaxCalculationService()
         {
-            _taxRulesProvider = taxRulesProvider ?? throw new ArgumentNullException(nameof(taxRulesProvider));
         }
 
         public IEnumerable<TaxCalculationResult> CalculateTaxes(IEnumerable<StockOperation> operations)
@@ -24,14 +22,8 @@ namespace GanhoDeCapital.Domain.Services
             int totalShares = 0;
             decimal accumulatedLoss = 0;
 
-            // For debugging Case #9
-            bool isCase9 = IsCase9(operations);
-            int operationIndex = 0;
-
             foreach (var operation in operations)
             {
-                operationIndex++;
-
                 if (operation.Operation == OperationType.Buy)
                 {
                     // Update weighted average price when buying using the formula:
@@ -60,38 +52,31 @@ namespace GanhoDeCapital.Domain.Services
                     // Calculate tax
                     decimal tax = 0;
                     
-                    // Special case for Case #9, operation 7 (index 6)
-                    if (isCase9 && operationIndex == 7)
-                    {
-                        // Hard-code the expected result for this specific test case
-                        tax = 1000.00m;
-                    }
-                    else if (profit > 0)
+                    if (profit > 0)
                     {
                         // First, apply accumulated losses to reduce taxable profit
                         decimal taxableProfit = profit;
                         
-                        if (accumulatedLoss > 0)
-                        {
-                            if (accumulatedLoss >= profit)
-                            {
-                                // All profit is offset by previous losses
-                                accumulatedLoss -= profit;
-                                taxableProfit = 0;
-                            }
-                            else
-                            {
-                                // Part of the profit is offset by previous losses
-                                taxableProfit = profit - accumulatedLoss;
-                                accumulatedLoss = 0;
-                            }
-                        }
-                        
                         // Apply exemption for operations below threshold (R$20,000.00)
-                        if (operationTotal > _taxRulesProvider.ExemptionThreshold)
+                        if (operationTotal > BrazilianTaxRulesProvider.ExemptionThreshold)
                         {
+                            if (accumulatedLoss > 0)
+                            {
+                                if (accumulatedLoss >= profit)
+                                {
+                                    // All profit is offset by previous losses
+                                    accumulatedLoss -= profit;
+                                    taxableProfit = 0;
+                                }
+                                else
+                                {
+                                    // Part of the profit is offset by previous losses
+                                    taxableProfit = profit - accumulatedLoss;
+                                    accumulatedLoss = 0;
+                                }
+                            }
                             // Apply 20% tax rate on the taxable profit
-                            tax = Math.Round(taxableProfit * _taxRulesProvider.TaxRate, 2);
+                            tax = Math.Round(taxableProfit * BrazilianTaxRulesProvider.TaxRate, 2);
                         }
                     }
                     else if (profit < 0)
@@ -105,19 +90,6 @@ namespace GanhoDeCapital.Domain.Services
             }
             
             return results;
-        }
-
-        // Helper method to identify Case #9 from the test
-        private bool IsCase9(IEnumerable<StockOperation> operations)
-        {
-            var operationsList = operations.ToList();
-            
-            if (operationsList.Count != 8)
-                return false;
-                
-            return operationsList[0].UnitCost == 5000.00m && operationsList[0].Quantity == 10 &&
-                   operationsList[1].UnitCost == 4000.00m && operationsList[1].Quantity == 5 &&
-                   operationsList[2].UnitCost == 15000.00m && operationsList[2].Quantity == 5;
         }
     }
 }

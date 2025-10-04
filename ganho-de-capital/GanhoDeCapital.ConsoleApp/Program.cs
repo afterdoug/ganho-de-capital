@@ -1,12 +1,11 @@
+using GanhoDeCapital.Application.DTOs;
+using GanhoDeCapital.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
-using GanhoDeCapital.Application.DTOs;
-using GanhoDeCapital.Application.Services;
-using GanhoDeCapital.Infrastructure;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace GanhoDeCapital.ConsoleApp
 {
@@ -39,10 +38,8 @@ namespace GanhoDeCapital.ConsoleApp
                         continue;
                     }
                     
-                    // Calculate taxes - each line is processed independently
                     var taxResults = taxCalculationService.CalculateTaxes(operations);
                     
-                    // Serialize and output the results
                     var jsonOutput = JsonSerializer.Serialize(taxResults);
                     Console.WriteLine(jsonOutput);
                 }
@@ -64,7 +61,6 @@ namespace GanhoDeCapital.ConsoleApp
                 .ConfigureServices((_, services) =>
                 {
                     services.AddApplicationServices();
-                    services.AddInfrastructureServices();
                 });
     }
 }

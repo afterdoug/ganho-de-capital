@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\GanhoDeCapital.Application\GanhoDeCapital.Application.csproj" />
     <ProjectReference Include="..\GanhoDeCapital.Domain\GanhoDeCapital.Domain.csproj" />
-    <ProjectReference Include="..\GanhoDeCapital.Infrastructure\GanhoDeCapital.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
