@@ -1,6 +1,4 @@
-using GanhoDeCapital.Domain.Services;
-
-namespace GanhoDeCapital.Infrastructure.Services
+namespace GanhoDeCapital.Domain.Providers
 {
     public static class BrazilianTaxRulesProvider
     {
