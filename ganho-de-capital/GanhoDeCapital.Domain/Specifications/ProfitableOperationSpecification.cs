@@ -1,4 +1,5 @@
 using GanhoDeCapital.Domain.Entities;
+using GanhoDeCapital.Domain.Services;
 
 namespace GanhoDeCapital.Domain.Specifications
 {
@@ -7,16 +8,12 @@ namespace GanhoDeCapital.Domain.Specifications
         public bool IsSatisfiedBy((StockOperation operation, decimal weightedAverageCost) entity)
         {
             var (operation, weightedAverageCost) = entity;
-            
-            // Only sell operations can be profitable
-            if (operation.Operation != OperationType.Sell)
-                return false;
-                
-            decimal costBasis = weightedAverageCost * operation.Quantity;
-            decimal operationTotal = operation.UnitCost * operation.Quantity;
-            
+
+            // Calculate profit or loss
+            decimal profit = ProfitCalculator.CalculateProfit(operation, weightedAverageCost);
+
             // Operation is profitable if the selling price is higher than the cost basis
-            return operationTotal > costBasis;
+            return profit > 0;
         }
     }
 }
