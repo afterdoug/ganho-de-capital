@@ -1,0 +1,23 @@
+# Directories
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+**/.vscode/
+**/.idea/
+
+# Files
+**/*.user
+**/*.userosscache
+**/*.suo
+**/*.dbmdl
+**/*.jfm
+**/*.log
+**/*.swp
+**/*.swo
+**/*.swn
+**/*.DS_Store
+**/*.bak
+**/*.cache
+**/*.trx
+**/*.dotCover

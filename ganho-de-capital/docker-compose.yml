@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    container_name: ganho-de-capital-app
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: >
+      bash -c "dotnet restore &&
+              dotnet build &&
+              echo 'Build completed. Use the commands below to run the application or tests:' &&
+              echo '- dotnet run --project GanhoDeCapital.ConsoleApp' &&
+              echo '- dotnet test GanhoDeCapital.Tests' &&
+              tail -f /dev/null"
+    ports:
+      - "5000:5000"
+    environment:
+      - DOTNET_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+
+  test:
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    container_name: ganho-de-capital-test
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: dotnet test
+    depends_on:
+      - app
