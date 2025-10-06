@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Domain\\GanhoDeCapital.Domain.csproj|c:\\devv\\ganho-de-capital\\ganho-de-capital\\ganhodecapital.domain\\services\\taxcalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Domain\\GanhoDeCapital.Domain.csproj|solutionrelative:ganhodecapital.domain\\services\\taxcalculationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Application\\GanhoDeCapital.Application.csproj|c:\\devv\\ganho-de-capital\\ganho-de-capital\\ganhodecapital.application\\services\\taxcalculationapplicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Application\\GanhoDeCapital.Application.csproj|solutionrelative:ganhodecapital.application\\services\\taxcalculationapplicationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.ConsoleApp\\GanhoDeCapital.ConsoleApp.csproj|c:\\devv\\ganho-de-capital\\ganho-de-capital\\ganhodecapital.consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.ConsoleApp\\GanhoDeCapital.ConsoleApp.csproj|solutionrelative:ganhodecapital.consoleapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Domain\\GanhoDeCapital.Domain.csproj|c:\\devv\\ganho-de-capital\\ganho-de-capital\\ganhodecapital.domain\\strategies\\selloperationstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B166EF57-48C6-4035-876E-A20D266AFBD7}|GanhoDeCapital.Domain\\GanhoDeCapital.Domain.csproj|solutionrelative:ganhodecapital.domain\\strategies\\selloperationstrategy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 290,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SellOperationStrategy.cs",
               "DocumentMoniker": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.Domain\\Strategies\\SellOperationStrategy.cs",
               "RelativeDocumentMoniker": "GanhoDeCapital.Domain\\Strategies\\SellOperationStrategy.cs",
@@ -28,6 +40,45 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-05T12:50:24.461Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaxCalculationApplicationService.cs",
+              "DocumentMoniker": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.Application\\Services\\TaxCalculationApplicationService.cs",
+              "RelativeDocumentMoniker": "GanhoDeCapital.Application\\Services\\TaxCalculationApplicationService.cs",
+              "ToolTip": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.Application\\Services\\TaxCalculationApplicationService.cs",
+              "RelativeToolTip": "GanhoDeCapital.Application\\Services\\TaxCalculationApplicationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAmwBoAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T01:26:58.493Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TaxCalculationService.cs",
+              "DocumentMoniker": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.Domain\\Services\\TaxCalculationService.cs",
+              "RelativeDocumentMoniker": "GanhoDeCapital.Domain\\Services\\TaxCalculationService.cs",
+              "ToolTip": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.Domain\\Services\\TaxCalculationService.cs",
+              "RelativeToolTip": "GanhoDeCapital.Domain\\Services\\TaxCalculationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T01:19:08.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.ConsoleApp\\Program.cs",
+              "RelativeDocumentMoniker": "GanhoDeCapital.ConsoleApp\\Program.cs",
+              "ToolTip": "C:\\devv\\ganho-de-capital\\ganho-de-capital\\GanhoDeCapital.ConsoleApp\\Program.cs",
+              "RelativeToolTip": "GanhoDeCapital.ConsoleApp\\Program.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T01:18:34.828Z",
               "EditorCaption": ""
             },
             {
