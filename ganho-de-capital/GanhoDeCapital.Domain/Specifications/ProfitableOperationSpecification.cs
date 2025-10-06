@@ -1,19 +1,12 @@
-using GanhoDeCapital.Domain.Entities;
-using GanhoDeCapital.Domain.Services;
+namespace GanhoDeCapital.Domain.Specifications;
 
-namespace GanhoDeCapital.Domain.Specifications
+public class ProfitableOperationSpecification : ISpecification<(decimal operationTotal, decimal costBasis)>
 {
-    public class ProfitableOperationSpecification : ISpecification<(StockOperation operation, decimal weightedAverageCost)>
+    public bool IsSatisfiedBy((decimal operationTotal, decimal costBasis) entity)
     {
-        public bool IsSatisfiedBy((StockOperation operation, decimal weightedAverageCost) entity)
-        {
-            var (operation, weightedAverageCost) = entity;
-
-            // Calculate profit or loss
-            decimal profit = ProfitCalculator.CalculateProfit(operation, weightedAverageCost);
-
-            // Operation is profitable if the selling price is higher than the cost basis
-            return profit > 0;
-        }
+        var (operationTotal, costBasis) = entity;
+        
+        // Operation is profitable if the selling price is higher than the cost basis
+        return operationTotal > costBasis;
     }
 }

@@ -5,6 +5,7 @@ public class StockOperation
     public OperationType Operation { get; private set; }
     public decimal UnitCost { get; private set; }
     public int Quantity { get; private set; }
+    public decimal TotalCostOperation => UnitCost * Quantity;
 
     public StockOperation(OperationType operation, decimal unitCost, int quantity)
     {

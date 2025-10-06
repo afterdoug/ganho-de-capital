@@ -28,4 +28,8 @@
     <ProjectReference Include="..\GanhoDeCapital.Application\GanhoDeCapital.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Domain\" />
+  </ItemGroup>
+
 </Project>

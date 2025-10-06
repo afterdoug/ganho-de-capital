@@ -3,16 +3,12 @@ using GanhoDeCapital.Domain.Services;
 
 namespace GanhoDeCapital.Domain.Specifications;
 
-public class LossOperationSpecification : ISpecification<(StockOperation operation, decimal weightedAverageCost)>
+public class LossOperationSpecification : ISpecification<(decimal operationTotal, decimal costBasis)>
 {
-    public bool IsSatisfiedBy((StockOperation operation, decimal weightedAverageCost) entity)
+    public bool IsSatisfiedBy((decimal operationTotal, decimal costBasis) entity)
     {
-        var (operation, weightedAverageCost) = entity;
-
-        // Calculate profit or loss
-        decimal profit = ProfitCalculator.CalculateProfit(operation, weightedAverageCost);
-
+        var (operationTotal, costBasis) = entity;
         // Operation results in loss if the selling price is lower than the cost basis
-        return profit < 0;
+        return operationTotal < costBasis;
     }
 }

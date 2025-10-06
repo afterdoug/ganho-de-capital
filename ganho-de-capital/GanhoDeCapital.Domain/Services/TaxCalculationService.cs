@@ -31,19 +31,14 @@ public class TaxCalculationService : ITaxCalculationService
             throw new ArgumentNullException(nameof(operations));
 
         var results = new List<TaxCalculationResult>();
-        decimal weightedAverageCost = 0;
-        int totalShares = 0;
-        decimal accumulatedLoss = 0;
+        var position = new Position();
 
         foreach (var operation in operations)
         {
             if (_strategies.TryGetValue(operation.Operation, out var strategy))
             {
                 var result = strategy.CalculateTax(
-                    operation, 
-                    ref weightedAverageCost, 
-                    ref totalShares, 
-                    ref accumulatedLoss);
+                    operation, ref position);
                 
                 results.Add(result);
             }

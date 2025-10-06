@@ -6,8 +6,6 @@ namespace GanhoDeCapital.Domain.Strategies
     {
         TaxCalculationResult CalculateTax(
             StockOperation operation, 
-            ref decimal weightedAverageCost, 
-            ref int totalShares, 
-            ref decimal accumulatedLoss);
+            ref Position position);
     }
 }

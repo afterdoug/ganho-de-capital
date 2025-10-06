@@ -8,38 +8,39 @@ public class ProfitCalculator
     {
     }
 
-    public static decimal CalculateProfit(StockOperation operation, decimal weightedAverageCost)
+    public static (decimal, decimal, decimal) CalculateProfit(StockOperation operation, decimal weightedAverageCost)
     {
         if (operation.Operation != OperationType.Sell)
-            return 0;
+            return default;
             
         decimal costBasis = weightedAverageCost * operation.Quantity;
         decimal operationTotal = operation.UnitCost * operation.Quantity;
-        
-        return operationTotal - costBasis;
+        decimal profit = operationTotal - costBasis;
+
+        return (profit, operationTotal, costBasis);
     }
     
-    public static decimal CalculateTaxableProfit(decimal profit, ref decimal accumulatedLoss)
+    public static decimal CalculateTaxableProfit(decimal profit, ref Position position)
     {
         if (profit <= 0)
             return 0;
             
         decimal taxableProfit = profit;
         
-        if (accumulatedLoss > 0)
+        if (position.AccumulatedLoss > 0)
         {
-            if (accumulatedLoss >= profit)
+            if (position.AccumulatedLoss >= profit)
             {
-                accumulatedLoss -= profit;
+                position.ReduceAccumulatedLoss(profit);
                 taxableProfit = 0;
             }
             else
             {
-                taxableProfit = profit - accumulatedLoss;
-                accumulatedLoss = 0;
+                taxableProfit = profit - position.AccumulatedLoss;
+                position.ResetAccumulatedLoss();
             }
         }
         
-        return taxableProfit;
+       return taxableProfit;
     }
 }
