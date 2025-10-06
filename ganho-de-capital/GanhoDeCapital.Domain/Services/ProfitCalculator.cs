@@ -8,9 +8,9 @@ public class ProfitCalculator
     {
     }
 
-    public static (decimal, decimal, decimal) CalculateProfit(StockOperation operation, decimal weightedAverageCost)
+    public static (decimal, decimal, decimal) CalculateProfit(Operation operation, decimal weightedAverageCost)
     {
-        if (operation.Operation != OperationType.Sell)
+        if (operation.OperationType != OperationType.Sell)
             return default;
             
         decimal costBasis = weightedAverageCost * operation.Quantity;

@@ -35,7 +35,7 @@ namespace GanhoDeCapital.Tests.Application
 
             // Setup mock to return expected domain results
             _taxCalculationService
-                .CalculateTaxes(Arg.Any<IEnumerable<StockOperation>>())
+                .CalculateTaxes(Arg.Any<IEnumerable<Operation>>())
                 .Returns(new List<TaxCalculationResult>
                 {
                     new TaxCalculationResult(0),

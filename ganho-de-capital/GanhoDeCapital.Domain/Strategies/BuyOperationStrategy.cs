@@ -5,7 +5,7 @@ namespace GanhoDeCapital.Domain.Strategies;
 public class BuyOperationStrategy : IOperationStrategy
 {
     public TaxCalculationResult CalculateTax(
-        StockOperation operation, 
+        Operation operation, 
         ref Position position)
     {
         position.UpdateTotalCostBefore();

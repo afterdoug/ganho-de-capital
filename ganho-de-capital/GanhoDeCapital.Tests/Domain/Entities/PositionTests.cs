@@ -147,11 +147,8 @@ namespace GanhoDeCapital.Tests.Domain.Entities
                 .SetValue(position, 100.0m);
             
             // Act
-            // ResetAccumulatedLoss is internal, so we need to use reflection to call it
-            typeof(Position).GetMethod("ResetAccumulatedLoss", 
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                .Invoke(position, null);
-            
+            position.ResetAccumulatedLoss();
+
             // Assert
             position.AccumulatedLoss.Should().Be(0);
         }

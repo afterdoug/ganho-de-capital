@@ -18,14 +18,14 @@ public class TaxCalculationService : ITaxCalculationService
             };
     }
 
-    public IEnumerable<TaxCalculationResult> CalculateTaxes(IEnumerable<StockOperation> operations)
+    public IEnumerable<TaxCalculationResult> CalculateTaxes(IEnumerable<Operation> operations)
     {
         var results = new List<TaxCalculationResult>();
         var position = new Position();
 
         foreach (var operation in operations)
         {
-            var strategy = _strategies.GetValueOrDefault(operation.Operation);
+            var strategy = _strategies.GetValueOrDefault(operation.OperationType);
 
             var result = strategy!.CalculateTax(operation, ref position);
 

@@ -18,10 +18,10 @@ namespace GanhoDeCapital.Tests.Domain.Services
         {
             // Arrange
             var service = Substitute.For<ITaxCalculationService>();
-            var operations = new List<StockOperation>
+            var operations = new List<Operation>
             {
-                new StockOperation(OperationType.Buy, 10.0m, 100),
-                new StockOperation(OperationType.Sell, 15.0m, 50)
+                new Operation(OperationType.Buy, 10.0m, 100),
+                new Operation(OperationType.Sell, 15.0m, 50)
             };
             
             var expectedResults = new List<TaxCalculationResult>
@@ -46,7 +46,7 @@ namespace GanhoDeCapital.Tests.Domain.Services
         {
             // Arrange
             var service = Substitute.For<ITaxCalculationService>();
-            var operations = new List<StockOperation>();
+            var operations = new List<Operation>();
             
             service.CalculateTaxes(operations).Returns(new List<TaxCalculationResult>());
             

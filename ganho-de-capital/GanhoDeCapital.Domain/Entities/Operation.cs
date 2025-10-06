@@ -1,15 +1,15 @@
 namespace GanhoDeCapital.Domain.Entities;
 
-public class StockOperation
+public class Operation
 {
-    public OperationType Operation { get; private set; }
+    public OperationType OperationType { get; private set; }
     public decimal UnitCost { get; private set; }
     public int Quantity { get; private set; }
     public decimal TotalCostOperation => UnitCost * Quantity;
 
-    public StockOperation(OperationType operation, decimal unitCost, int quantity)
+    public Operation(OperationType operation, decimal unitCost, int quantity)
     {
-        Operation = operation;
+        OperationType = operation;
         UnitCost = unitCost;
         Quantity = quantity;
     }

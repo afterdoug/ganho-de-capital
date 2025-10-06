@@ -18,7 +18,7 @@ public class SellOperationStrategy : IOperationStrategy
     }
 
     public TaxCalculationResult CalculateTax(
-        StockOperation operation,
+        Operation operation,
         ref Position position)
     {
         decimal tax = 0;
@@ -31,7 +31,7 @@ public class SellOperationStrategy : IOperationStrategy
 
         // Check if operation is profitable and Check if operation is exempt from taxes
         if (_profitableSpec.IsSatisfiedBy((operationTotal, costBasis))
-            && !_taxExemptSpec.IsSatisfiedBy((operation, position.WeightedAverageCost)))
+            && !_taxExemptSpec.IsSatisfiedBy(operation))
         {
             decimal taxableProfit = ProfitCalculator.CalculateTaxableProfit(profit, ref position);
             

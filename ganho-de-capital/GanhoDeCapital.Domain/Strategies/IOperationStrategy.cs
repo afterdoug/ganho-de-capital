@@ -5,7 +5,7 @@ namespace GanhoDeCapital.Domain.Strategies
     public interface IOperationStrategy
     {
         TaxCalculationResult CalculateTax(
-            StockOperation operation, 
+            Operation operation, 
             ref Position position);
     }
 }

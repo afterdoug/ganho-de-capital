@@ -21,7 +21,7 @@ public class TaxCalculationApplicationService : ITaxCalculationApplicationServic
         if (operationDtos == null)
             throw new ArgumentNullException(nameof(operationDtos));
 
-        List<StockOperation> operations = MapToEntity(operationDtos);
+        List<Operation> operations = MapToEntity(operationDtos);
 
         // Calculate taxes using domain service
         var taxResults = _taxCalculationService.CalculateTaxes(operations);
@@ -30,9 +30,9 @@ public class TaxCalculationApplicationService : ITaxCalculationApplicationServic
         return taxResults.Select(result => new TaxResultDto { Tax = result.Tax });
     }
 
-    private static List<StockOperation> MapToEntity(IEnumerable<StockOperationDto> operationDtos)
+    private static List<Operation> MapToEntity(IEnumerable<StockOperationDto> operationDtos)
     {
-        return operationDtos.Select(dto => new StockOperation(
+        return operationDtos.Select(dto => new Operation(
             ParseOperationType(dto.Operation),
             dto.UnitCost,
             dto.Quantity

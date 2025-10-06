@@ -19,12 +19,10 @@ namespace GanhoDeCapital.Tests.Domain.Specifications
         public void IsSatisfiedBy_WithBuyOperation_ShouldReturnTrue()
         {
             // Arrange
-            var operation = new StockOperation(OperationType.Buy, 100m, 1000);
-            decimal weightedAverageCost = 90m;
-            var entity = (operation, weightedAverageCost);
+            var operation = new Operation(OperationType.Buy, 100m, 1000);
             
             // Act
-            bool result = _specification.IsSatisfiedBy(entity);
+            bool result = _specification.IsSatisfiedBy(operation);
             
             // Assert
             result.Should().BeTrue();
@@ -36,12 +34,10 @@ namespace GanhoDeCapital.Tests.Domain.Specifications
             // Arrange
             decimal unitCost = 10m;
             int quantity = 1000; // Total: 10,000 which is below the 20,000 threshold
-            var operation = new StockOperation(OperationType.Sell, unitCost, quantity);
-            decimal weightedAverageCost = 8m;
-            var entity = (operation, weightedAverageCost);
+            var operation = new Operation(OperationType.Sell, unitCost, quantity);
             
             // Act
-            bool result = _specification.IsSatisfiedBy(entity);
+            bool result = _specification.IsSatisfiedBy(operation);
             
             // Assert
             result.Should().BeTrue();
@@ -53,12 +49,10 @@ namespace GanhoDeCapital.Tests.Domain.Specifications
             // Arrange
             decimal unitCost = 20m;
             int quantity = 1000; // Total: 20,000 which is equal to the threshold
-            var operation = new StockOperation(OperationType.Sell, unitCost, quantity);
-            decimal weightedAverageCost = 15m;
-            var entity = (operation, weightedAverageCost);
+            var operation = new Operation(OperationType.Sell, unitCost, quantity);
             
             // Act
-            bool result = _specification.IsSatisfiedBy(entity);
+            bool result = _specification.IsSatisfiedBy(operation);
             
             // Assert
             result.Should().BeTrue();
@@ -70,12 +64,10 @@ namespace GanhoDeCapital.Tests.Domain.Specifications
             // Arrange
             decimal unitCost = 25m;
             int quantity = 1000; // Total: 25,000 which is above the 20,000 threshold
-            var operation = new StockOperation(OperationType.Sell, unitCost, quantity);
-            decimal weightedAverageCost = 20m;
-            var entity = (operation, weightedAverageCost);
+            var operation = new Operation(OperationType.Sell, unitCost, quantity);
             
             // Act
-            bool result = _specification.IsSatisfiedBy(entity);
+            bool result = _specification.IsSatisfiedBy(operation);
             
             // Assert
             result.Should().BeFalse();
@@ -90,12 +82,10 @@ namespace GanhoDeCapital.Tests.Domain.Specifications
             OperationType operationType, decimal unitCost, int quantity, bool expectedResult)
         {
             // Arrange
-            var operation = new StockOperation(operationType, unitCost, quantity);
-            decimal weightedAverageCost = 15m; // Not relevant for this test
-            var entity = (operation, weightedAverageCost);
+            var operation = new Operation(operationType, unitCost, quantity);
             
             // Act
-            bool result = _specification.IsSatisfiedBy(entity);
+            bool result = _specification.IsSatisfiedBy(operation);
             
             // Assert
             result.Should().Be(expectedResult);

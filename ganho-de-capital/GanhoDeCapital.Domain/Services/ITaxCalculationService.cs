@@ -5,6 +5,6 @@ namespace GanhoDeCapital.Domain.Services
 {
     public interface ITaxCalculationService
     {
-        IEnumerable<TaxCalculationResult> CalculateTaxes(IEnumerable<StockOperation> operations);
+        IEnumerable<TaxCalculationResult> CalculateTaxes(IEnumerable<Operation> operations);
     }
 }

@@ -25,7 +25,7 @@ namespace GanhoDeCapital.Tests.Domain.Strategies
             typeof(Position).GetProperty("WeightedAverageCost")
                 .SetValue(position, 10.0m);
             
-            var operation = new StockOperation(OperationType.Buy, 15.0m, 100);
+            var operation = new Operation(OperationType.Buy, 15.0m, 100);
             
             // Act
             var result = _strategy.CalculateTax(operation, ref position);
@@ -48,7 +48,7 @@ namespace GanhoDeCapital.Tests.Domain.Strategies
                 .SetValue(position, 10.0m);
             
             // New buy operation: 50 shares at 20.0 each
-            var operation = new StockOperation(OperationType.Buy, 20.0m, 50);
+            var operation = new Operation(OperationType.Buy, 20.0m, 50);
             
             // Expected weighted average: (100*10 + 50*20) / 150 = (1000 + 1000) / 150 = 2000 / 150 = 13.33...
             
@@ -78,7 +78,7 @@ namespace GanhoDeCapital.Tests.Domain.Strategies
             typeof(Position).GetProperty("WeightedAverageCost")
                 .SetValue(position, initialAvgCost);
             
-            var operation = new StockOperation(OperationType.Buy, buyUnitCost, buyQuantity);
+            var operation = new Operation(OperationType.Buy, buyUnitCost, buyQuantity);
             
             // Act
             var result = _strategy.CalculateTax(operation, ref position);

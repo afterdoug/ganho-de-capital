@@ -3,18 +3,17 @@ using GanhoDeCapital.Domain.Providers;
 
 namespace GanhoDeCapital.Domain.Specifications;
 
-public class TaxExemptOperationSpecification : ISpecification<(StockOperation operation, decimal weightedAverageCost)>
+/// <summary>
+/// Operations with total value below or equal to the threshold are exempt
+/// </summary>
+public class TaxExemptOperationSpecification : ISpecification<Operation>
 {
-    public bool IsSatisfiedBy((StockOperation operation, decimal weightedAverageCost) entity)
+    public bool IsSatisfiedBy(Operation operation)
     {
-        var (operation, _) = entity;
-        
         // Buy operations are always exempt from taxes
-        if (operation.Operation == OperationType.Buy)
+        if (operation.OperationType == OperationType.Buy)
             return true;
-            
-        // Operations with total value below or equal to the threshold are exempt
-        decimal operationTotal = operation.UnitCost * operation.Quantity;
-        return operationTotal <= BrazilianTaxRulesProvider.ExemptionThreshold;
+        
+        return operation.TotalCostOperation <= BrazilianTaxRulesProvider.ExemptionThreshold;
     }
 }
