@@ -35,7 +35,7 @@ public class SellOperationStrategy : IOperationStrategy
         {
             decimal taxableProfit = ProfitCalculator.CalculateTaxableProfit(profit, ref position);
             
-            tax = TaxRateCalculator.CalculateTax(taxableProfit);
+            tax = TaxRateCalculator.ApplyTax(taxableProfit);
         }
         // Check if operation results in loss
         else if (_lossSpec.IsSatisfiedBy((operationTotal, costBasis)))

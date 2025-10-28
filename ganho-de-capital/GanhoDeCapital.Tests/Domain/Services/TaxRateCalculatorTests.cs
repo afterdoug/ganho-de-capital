@@ -15,7 +15,7 @@ namespace GanhoDeCapital.Tests.Domain.Services
         public void CalculateTax_ShouldApplyCorrectTaxRate(decimal profit, decimal expectedTax)
         {
             // Act
-            decimal calculatedTax = TaxRateCalculator.CalculateTax(profit);
+            decimal calculatedTax = TaxRateCalculator.ApplyTax(profit);
             
             // Assert
             calculatedTax.Should().Be(expectedTax);
@@ -29,7 +29,7 @@ namespace GanhoDeCapital.Tests.Domain.Services
             decimal expectedTax = profit * BrazilianTaxRulesProvider.TaxRate;
             
             // Act
-            decimal calculatedTax = TaxRateCalculator.CalculateTax(profit);
+            decimal calculatedTax = TaxRateCalculator.ApplyTax(profit);
             
             // Assert
             calculatedTax.Should().Be(expectedTax);
@@ -43,7 +43,7 @@ namespace GanhoDeCapital.Tests.Domain.Services
             decimal expectedTax = decimal.Round(profit * BrazilianTaxRulesProvider.TaxRate, 2);
             
             // Act
-            decimal calculatedTax = TaxRateCalculator.CalculateTax(profit);
+            decimal calculatedTax = TaxRateCalculator.ApplyTax(profit);
             
             // Assert
             calculatedTax.Should().Be(expectedTax);

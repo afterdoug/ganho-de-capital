@@ -9,7 +9,7 @@ public class TaxRateCalculator
     {
     }
 
-    public static decimal CalculateTax(decimal taxableProfit)
+    public static decimal ApplyTax(decimal taxableProfit)
     {
         return Math.Round(taxableProfit * BrazilianTaxRulesProvider.TaxRate, 2);
     }
